@@ -3,7 +3,7 @@
 A simple yet highly modular permission system for discord bots
 
 ## Download
-
+You can download the latest version of CPermManager [here](https://github.com/ctection/CPermManager/releases/tag/1.0.0) 
 ## Getting Started
 After you downloaded the CPermManager JAR, you can start implementing this library into your project.
 
