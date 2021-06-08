@@ -10,9 +10,9 @@ After you downloaded the CPermManager JAR, you can start implementing this libra
 First you have to create a PermissionManager object:
 ```Java
 PermissionManager manager = new PermissionManager("MySQL Host", "SQL Port", "Database", 
-"Username", "Password", "setId");
+"Username", "Password", "setname");
 ```
-The *setId* argument is used to identify your PermissionSet, you can pick for example the name of your bot for that. 
+The *setname* argument is used to identify your PermissionSet, you can pick for example the name of your bot for that. 
 ### Configuring CPermManager
 Now that you have a PermissionManager object you have to configure it once in order to use it. This means that you have to create Permissions and add them to your PermissionSet:
 ```Java
