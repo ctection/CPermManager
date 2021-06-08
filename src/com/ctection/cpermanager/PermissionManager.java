@@ -18,16 +18,16 @@ public class PermissionManager {
     public PermissionManager(String sqlHost, String sqlPort, String sqlDB, String sqlUsr, String sqlPw, String setId) throws SQLException {
         this.sqlFactory = new SQLFactory(sqlHost, sqlPort, sqlDB, sqlUsr, sqlPw);
         this.manager = this;
-        this.set = new PermissionSet();
+        this.set = new PermissionSet(setId);
         this.setId = setId;
         SQL sql = sqlFactory.get();
         sql.update("CREATE TABLE IF NOT EXISTS CPermPermList(" +
-                "setid VARCHAR(50) NOT NULL," +
+                "setid VARCHAR(50) UNIQUE NOT NULL," +
                 "perms TEXT(4294967295)" +
                 ");");
         sql.update("CREATE TABLE IF NOT EXISTS CPermUserPerms(" +
                 "id SERIAL PRIMARY KEY," +
-                "setid VARCHAR(50) NOL NULL," +
+                "setid VARCHAR(50) UNIQUE NOL NULL," +
                 "guild_id VARCHAR (50) NOT NULL," +
                 "user_id VARCHAR (50) NOT NULL, " +
                 "perms TEXT (4294967295) NOT NULL, " +
@@ -35,7 +35,7 @@ public class PermissionManager {
                 ");");
         sql.update("CREATE TABLE IF NOT EXISTS CPermRolePerms(" +
                 "id SERIAL PRIMARY KEY," +
-                "setid VARCHAR(50) NOL NULL," +
+                "setid VARCHAR(50) UNIQUE NOL NULL," +
                 "guild_id VARCHAR (50) NOT NULL," +
                 "role_id VARCHAR (50) NOT NULL, " +
                 "perms TEXT (4294967295) NOT NULL," +
@@ -51,6 +51,7 @@ public class PermissionManager {
                 e.printStackTrace();
             }
         }
+        sql.disconnect();
     }
 
     protected SQLFactory getSqlFactory() {
@@ -59,7 +60,6 @@ public class PermissionManager {
     public static PermissionManager getInstance() {
         return manager;
     }
-
     public PermissionSet getSet() {
         return set;
     }

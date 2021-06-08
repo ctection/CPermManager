@@ -75,7 +75,6 @@ public class Permission {
         sql.disconnect();
         return isRemoved;
     }
-
     public boolean removeFromRole(String setId, String guildId, String roleId) {
         Permission sourcePermisssion = this;
         SQL sql = PermissionManager.getInstance().getSqlFactory().get();
@@ -345,7 +344,6 @@ public class Permission {
         }
         return false;
     }
-
     public boolean roleHasPermission(String guildId, String roleId, String setId){
         ArrayList<Permission> permissions = getRolePermissions(guildId, roleId, setId);
         for (Permission p : permissions) {
