@@ -15,19 +15,18 @@ public class PermissionManager {
     private static PermissionManager manager;
     private final PermissionSet set;
     private final String setId;
-    public PermissionManager(String sqlHost, String sqlPort, String sqlDB, String sqlUsr, String sqlPw, String setId) throws SQLException {
+    public PermissionManager(String sqlHost, String sqlPort, String sqlDB, String sqlUsr, String sqlPw, String setname) throws SQLException {
         this.sqlFactory = new SQLFactory(sqlHost, sqlPort, sqlDB, sqlUsr, sqlPw);
         this.manager = this;
-        this.set = new PermissionSet(setId);
-        this.setId = setId;
         SQL sql = sqlFactory.get();
         sql.update("CREATE TABLE IF NOT EXISTS CPermPermList(" +
-                "setid VARCHAR(50) UNIQUE NOT NULL," +
+                "setid SERIAL PRIMARY KEY," +
+                "name VARCHAR(50) NOT NULL," +
                 "perms TEXT(4294967295)" +
                 ");");
         sql.update("CREATE TABLE IF NOT EXISTS CPermUserPerms(" +
                 "id SERIAL PRIMARY KEY," +
-                "setid VARCHAR(50) UNIQUE NOL NULL," +
+                "setid bigint (20) UNSIGNED," +
                 "guild_id VARCHAR (50) NOT NULL," +
                 "user_id VARCHAR (50) NOT NULL, " +
                 "perms TEXT (4294967295) NOT NULL, " +
@@ -35,20 +34,27 @@ public class PermissionManager {
                 ");");
         sql.update("CREATE TABLE IF NOT EXISTS CPermRolePerms(" +
                 "id SERIAL PRIMARY KEY," +
-                "setid VARCHAR(50) UNIQUE NOL NULL," +
+                "setid bigint (20) UNSIGNED," +
                 "guild_id VARCHAR (50) NOT NULL," +
                 "role_id VARCHAR (50) NOT NULL, " +
                 "perms TEXT (4294967295) NOT NULL," +
                 "FOREIGN KEY (`setid`) REFERENCES `CPermPermList` (`setid`)" +
                 ");");
-        String result = sql.resultSet("SELECT perms from CPermPermList WHERE setid='" + set + "';");
-        for (String perm : result.split(" ")) {
-            try {
-                this.set.addPermission(new Permission(perm));
-            } catch (InvalidArgumentException e) {
-                System.err.println("There is an invalid permission in the PermissionSet:\n" +
-                        "Permission: " + perm + "\nSet ID: " + setId);
-                e.printStackTrace();
+        String result = sql.resultSet("SELECT perms from CPermPermList WHERE name='" + setname + "';");
+        if (result == null) {
+            sql.update("INSERT INTO CPermPermList(name) VALUES('" + setname + "');");
+        }
+        this.setId = sql.resultSet("SELECT setid from CPermPermList WHERE name='" + setname + "';");
+        this.set = new PermissionSet(setId);
+        if (result != null) {
+            for (String perm : result.split(" ")) {
+                try {
+                    this.set.addPermission(new Permission(perm));
+                } catch (InvalidArgumentException e) {
+                    System.err.println("There is an invalid permission in the PermissionSet:\n" +
+                            "Permission: " + perm + "\nSet ID: " + setId);
+                    e.printStackTrace();
+                }
             }
         }
         sql.disconnect();

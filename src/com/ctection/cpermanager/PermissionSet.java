@@ -46,7 +46,7 @@ public class PermissionSet {
             permNames.add(p.getId());
         }
         try {
-            sql.update("UPDATE CPermPermList set perms='" + String.join(" ",permNames) + "' WHERE setid='" + setId + "';");
+            sql.update("UPDATE CPermPermList SET perms='" + String.join(" ",permNames) + "' WHERE setid='" + setId + "';");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
