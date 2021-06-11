@@ -7,13 +7,14 @@ A simple yet highly modular permission system for discord bots
 |Lincense|[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/ctection/CPermManager/blob/master/LICENSE)|
 |Support |[![Discord](https://img.shields.io/discord/554675435309629451?logo=discord)](https://discord.gg/eaZseHT2F7)|
 |Downloads|[![Github all releases](https://img.shields.io/github/downloads/ctection/CPermManager/total.svg)](https://GitHub.com/ctection/CPermManager/releases/)|
+|Build|![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ctection/CPermManager/Gradle)|
 ## Download
 |  |  |
 |--|--|
 |Latest Github Release|[![GitHub release](https://img.shields.io/github/release/ctection/CPermManager.svg)](https://GitHub.com/ctection/CPermManager/releases/)|
 |Maven Central|[![Maven Central](https://img.shields.io/maven-central/v/com.ctection/CPermManager?color=gree)](https://search.maven.org/artifact/com.ctection/CPermManager/1.0.0/jar) |
 |Commits|![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/ctection/CPermManager/1.0.0?color=gree&sort=date)|
-|Build|![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ctection/CPermManager/Gradle)|
+
 
 **Be sure to replace VERSION with the version shown above!**
 #### Maven
