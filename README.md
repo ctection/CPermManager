@@ -1,9 +1,37 @@
 
+
 # CPermManager
 A simple yet highly modular permission system for discord bots
-
+| | |
+|--|--|
+|Lincense|[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/ctection/CPermManager/blob/master/LICENSE)|
+|Support |[![Discord](https://img.shields.io/discord/554675435309629451?logo=discord)](https://discord.gg/eaZseHT2F7)|
+|Downloads|[![Github all releases](https://img.shields.io/github/downloads/ctection/CPermManager/total.svg)](https://GitHub.com/ctection/CPermManager/releases/)|
 ## Download
-You can download the latest version of CPermManager [here](https://github.com/ctection/CPermManager/releases/tag/1.0.0) 
+|  |  |
+|--|--|
+|Latest Github Release|[![GitHub release](https://img.shields.io/github/release/ctection/CPermManager.svg)](https://GitHub.com/ctection/CPermManager/releases/)|
+|Maven Central|[![Maven Central](https://img.shields.io/maven-central/v/com.ctection/CPermManager?color=gree)](https://search.maven.org/artifact/com.ctection/CPermManager/1.0.0/jar) |
+|Commits|![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/ctection/CPermManager/1.0.0?color=gree&sort=date)|
+
+**Be sure to replace VERSION with the version shown above!**
+#### Maven
+```XML
+<dependencies>
+	<dependency>
+	  <groupId>com.ctection</groupId>
+	  <artifactId>CPermManager</artifactId>
+	  <version>VERSION</version>
+	</dependency>
+</dependencies>
+```
+#### Gradle
+```gradle
+dependencies {
+	implementation 'com.ctection:CPermManager:1.0.0'
+}
+```
+
 ## Getting Started
 After you downloaded the CPermManager JAR, you can start implementing this library into your project.
 
