@@ -1,2 +1,12 @@
 # Project exclude paths
 /out/
+.gitignore
+/build/
+/gradle
+gradlew
+gradlew.bat
+CPermManager.jar
+CPermManager_withDependencies.jar
+CPermManager_withDependencies_no_JDA.jar
+/.idea/
+/.gradle/

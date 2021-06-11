@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
+}
+plugins {
+    id 'java'
+    id 'io.codearte.nexus-staging' version '0.11.0'
+}
+group 'com.ctection'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://m2.dv8tion.net/releases"
+    }
+}
+dependencies {
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.25'
+    implementation('net.dv8tion:JDA:4.2.1_276'){
+        exclude module: 'opus-java'
+    }
+}
+apply plugin: 'com.bmuschko.nexus'
+archivesBaseName = 'CPermManager'
+group = "com.ctection"
+version = "1.0.0"
+
+modifyPom {
+    project {
+        name 'CPermManager'
+        description 'A simple library to create and manage custom permissions of JDA bots'
+        url 'https://github.com/ctection/CPermManager'
+        inceptionYear '2021'
+
+        scm {
+            url 'https://github.com/ctection/CPermManager'
+            connection 'scm:https://github.com/ctection/CPermManager.git'
+            developerConnection 'scm:git://github.com/ctection/CPermManager'
+        }
+        licenses {
+            license {
+                name 'The MIT License'
+                url 'https://github.com/ctection/CPermManager/blob/master/LICENSE'
+                distribution 'repo'
+            }
+        }
+        developers {
+            developer {
+                id 'schmazda'
+                name 'Mathias Neumann'
+                email 'schmazda@ctection.com'
+            }
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
+}
+nexusStaging {
+    packageGroup = "com.ctection"
+}

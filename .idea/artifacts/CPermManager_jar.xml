@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/</output-path>
     <root id="archive" name="CPermManager.jar">
       <element id="module-output" name="CPermManager" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../Libraries/gson-2.8.6.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
