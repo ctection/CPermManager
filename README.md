@@ -28,7 +28,7 @@ A simple yet highly modular permission system for discord bots
 #### Gradle
 ```gradle
 dependencies {
-	implementation 'com.ctection:CPermManager:1.0.0'
+	implementation 'com.ctection:CPermManager:VERSION'
 }
 ```
 
